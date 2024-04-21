@@ -1,0 +1,15 @@
+.text-editor {
+    background-color:cornsilk;
+    padding: 10px
+}
+.editor-button {
+    margin: 5px;
+}
+
+#editor {
+    border: 1px solid black;
+    padding: 15px;
+    margin-top: 10px;
+    height: 400px;
+    background: white;
+}
