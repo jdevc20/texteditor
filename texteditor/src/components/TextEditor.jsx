@@ -5,8 +5,6 @@ class TextEditor extends React.Component {
     state = {
         color: 'black',
         highlightColor: 'transparent',
-        autoColor: false,
-        autoHighlight: false
     }
 
     insertImage = () => {
@@ -94,8 +92,11 @@ class TextEditor extends React.Component {
         this.setState({ selectedText });
     }
     handleClear = () => {
-        this.setState({ color: 'black', highlightColor: 'transparent' })
+        this.setState({ color: 'black', highlightColor: 'transparent' });
+        document.execCommand('foreColor', false, 'black');
+        document.execCommand('hiliteColor', false, 'transparent');
     }
+
 
     render() {
         return (
@@ -103,6 +104,11 @@ class TextEditor extends React.Component {
                 <div>
                     <button className="editor-button" onClick={() => document.execCommand('bold', false, '')}><i className="fa fa-bold" /></button>
                     <button className="editor-button" onClick={() => document.execCommand('italic', false, '')}><i className="fa fa-italic" /></button>
+                    <button className="editor-button" onClick={() => document.execCommand('formatBlock', false, '<h1>')}>H1</button>
+                    <button className="editor-button" onClick={() => document.execCommand('formatBlock', false, '<h2>')}>H2</button>
+                    <button className="editor-button" onClick={() => document.execCommand('formatBlock', false, '<h3>')}>H3</button>
+                    <button className="editor-button" onClick={() => document.execCommand('formatBlock', false, '<h4>')}>H4</button>
+                    <button className="editor-button" onClick={() => document.execCommand('formatBlock', false, '<h5>')}>H5</button>
                     <button className="editor-button" onClick={() => document.execCommand('underline', false, '')}><i className="fa fa-underline" /></button>
                     <button className="editor-button" onClick={() => document.execCommand('insertUnorderedList', false, '')}><i className="fa fa-list-ul" /></button>
                     <button className="editor-button" onClick={() => document.execCommand('insertOrderedList', false, '')}><i className="fa fa-list-ol" /></button>
